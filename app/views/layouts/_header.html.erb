@@ -10,9 +10,12 @@
     <a class="navbar-brand" href="#">OmniPoll</a>
   </div>
 
+
+<!--link to modals -->
   <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
     <% if signed_in? %>
-    <%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %>
+  <%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %>
+
     <% else %>
     <ul class="nav navbar-nav">
       <li><%= link_to "Log in", new_session_url %></li>
