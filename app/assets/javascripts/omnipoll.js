@@ -1,13 +1,14 @@
-window.Omnipoll = {
+window.OmniPoll = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new OmniPoll.Routers.OmniPollRouter();
+    Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
-  Omnipoll.initialize();
+  OmniPoll.initialize();
 });

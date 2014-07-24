@@ -1,22 +1,21 @@
-class QuestionsController < ApplicationController
+class Api::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
-    
+
     if @question.save
       render json: @question
     else
       render json: @question.errors.full_messages, status: :unprocessable_entity
     end
   end
-  
+
   def helloworld
-    fail
-    Pusher['test_channel'].trigger('my_event', {
+      Pusher['whatever_channel'].trigger('my_event', {
       message: 'hello world'
-    })
-    render json: {}
+      })
+      render json: {}
   end
-  
+
   def destroy
     @question = Question.find(params[:id])
 
@@ -29,8 +28,6 @@ class QuestionsController < ApplicationController
     #logic for current question...
     render json: @question
   end
-
-
 
   # Only needed for potential previous polls view
   def index

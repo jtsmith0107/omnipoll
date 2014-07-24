@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
-    resources :questions
-    resources :answers
+    resources :questions, only: [:create, :update, :destroy]
+    resources :answers, only: [:create, :update, :destroy]
   end
 
   root to: 'staticpages#root'
   resources :users
   resource :session
 
-  get '/helloworld/', to: 'questions#helloworld', as: 'helloworld', defaults: {format: :json}
+  get '/helloworld/', to: 'api/questions#helloworld', as: 'helloworld', defaults: {format: :json}
 
 end

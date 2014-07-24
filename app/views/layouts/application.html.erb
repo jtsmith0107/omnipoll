@@ -3,8 +3,8 @@
 <head>
   <%= favicon_link_tag 'favicon.ico' %>
   <title>Omnipoll</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   
 <!--pusher script -->
@@ -17,7 +17,7 @@
         }
       };
       var pusher = new Pusher('6e17d501bab807030f9d');
-      var channel = pusher.subscribe('test_channel');
+      var channel = pusher.subscribe('whatever_channel');
       channel.bind('my_event', function(data) {
         alert(data.message);
       });
