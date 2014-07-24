@@ -9,31 +9,39 @@ class QuestionsController < ApplicationController
     end
   end
   
-  def destroy
-    @question = Question.find(params[:id])
-    
-    @question.try(:destroy)
+  def helloworld
+    fail
+    Pusher['test_channel'].trigger('my_event', {
+      message: 'hello world'
+    })
     render json: {}
   end
   
+  def destroy
+    @question = Question.find(params[:id])
+
+    @question.try(:destroy)
+    render json: {}
+  end
+
   def show
     @question = Question.find(params[:id])
     #logic for current question...
-    render :json @question
+    render json: @question
   end
-  
-  
-  
+
+
+
   # Only needed for potential previous polls view
   def index
     @questions = Question.all
     render json: @questions
   end
-  
+
   private
-  
+
   def question_params
-    params.require(:question).permit(:title)    
+    params.require(:question).permit(:title)
   end
-  
+
 end

@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'delayed_job_active_record'
 gem 'delayed_job'
+gem 'chart-js-rails'
+gem 'backbone-on-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -40,7 +42,8 @@ end
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
-
+ gem 'pusher'
+ gem 'figaro'
 # Use unicorn as the app server
 # gem 'unicorn'
 
