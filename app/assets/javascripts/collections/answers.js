@@ -4,7 +4,7 @@ OmniPoll.Collections.Answers = Backbone.Collection.extend({
   },
   
   initialize: function(models, options){
-    this.question = option.question
+    this.question = options.question
   },
   
   model: OmniPoll.Models.Answer

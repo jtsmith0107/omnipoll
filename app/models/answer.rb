@@ -9,10 +9,10 @@
 #  updated_at  :datetime
 #
 
-class Answers < ActiveRecord::Base
+class Answer < ActiveRecord::Base
   validates :title, :question_id, presence: true
   
   belongs_to :question
   has_many :answer_choices, 
-  classname: :answerchoice
+  class_name: :Answerchoice
 end

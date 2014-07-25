@@ -9,9 +9,8 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     
     
     //HARD CODING UNTIL QUESTIONS CHANGE PROPERLY
-    var question = OmniPoll.Collections.questions.getOrFetch(2);
-    //CHANGE ME!
-    
+    var question = OmniPoll.Collections.questions.getOrFetch(3);
+    //CHANGE ME!    
     
     
     var showView = new OmniPoll.Views.QuestionsShow({

@@ -26,10 +26,10 @@ class Api::QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     #logic for current question...
-    render json: @question
+    render :show
   end
 
-  # Only needed for potential previous polls view
+  # Only needed for potential previous pol'ls view
   def index
     @questions = Question.all
     render json: @questions

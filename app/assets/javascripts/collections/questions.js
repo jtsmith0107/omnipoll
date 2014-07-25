@@ -6,8 +6,8 @@ OmniPoll.Collections.Questions = Backbone.Collection.extend({
     var questions = this;
     var question; 
     if(question = this.get(id)){
-      board.fetch();
-    } else{
+      question.fetch();
+    } else {
       question = new OmniPoll.Models.Question({id: id});
       question.fetch();
       questions.add(question);

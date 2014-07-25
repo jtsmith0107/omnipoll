@@ -1,1 +1,14 @@
-<%= question.title %>
+
+<div class='jumbotron'>
+
+<%= question.escape('title') %>
+
+
+  <div class="answers list-group"></div>
+  <div class="chart"></div>
+  <!-- <% question.answers().each(function(answer){ %>
+    <%= answer.escape('title')  %>
+  <% }); %> -->
+
+  
+</div>

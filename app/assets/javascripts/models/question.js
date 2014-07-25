@@ -1,8 +1,9 @@
 OmniPoll.Models.Question = Backbone.Model.extend({
   urlRoot: '/api/questions/',
+
   
   parse: function(jsonResp){
-    if(jsonResp.answers){
+   if(jsonResp.answers){
       var resp = jsonResp
       this.answers().set(jsonResp.answers, {parse: true});
       delete jsonResp.answers;
@@ -12,7 +13,7 @@ OmniPoll.Models.Question = Backbone.Model.extend({
   
   answers: function(){
     this._answers = this._answers ||
-    OmniPoll.Collections.Answers([], {question: this});
+    new OmniPoll.Collections.Answers([], {question: this});
     return this._answers;
   }
   

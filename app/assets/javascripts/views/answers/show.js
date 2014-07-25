@@ -3,8 +3,11 @@ OmniPoll.Views.AnswersShow = Backbone.CompositeView.extend({
 
   render: function(){
     var content = this.template({
-      model: this.model
-    })
+      answer: this.model
+    });
+    this.$el.html(content);
+    this.attachSubviews();
+    return this;
   } 
   
 });
