@@ -1,29 +1,50 @@
 OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   template: JST['questions/show'],
   
+
+  
+  className: 'jumbotron',
+  
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.answers(), "sync remove", this.render);
+    // this.listenTo(this.model.answers(), "sync remove", this.render);
     this.listenTo(this.model.answers(), "add", this.addAnswer);
     this.chartView = new OmniPoll.Views.ChartShow();
+    this._voted = false
     
-    this._subviews = {}
+    // this._subviews = {}
+
+    // this.buttonView = new OmniPoll.Views.ButtonView();
+    // this.addSubview('.button', this.chartView);
 
     this.model.answers().each(this.addAnswer.bind(this));
 
   },
   
-  event: {
+  events: {
     'click .list-group-item' : 'selectAnswer',
-    'click .submit-vote' : 'submitVote'
+    'click #submit-vote' : 'submitVote'
   },
   
   selectAnswer: function(event){
-    event.currentTarget.addClass('active');
+    if(!this._voted){
+      $('.list-group-item').removeClass('active');
+      $(event.currentTarget).addClass('active');  
+      this._selected_answer = $(event.currentTarget).attr('data-id');          
+    }
   },
   
   submitVote: function(){
-    
+    if(!this._voted && this._selected_answer){
+      debugger
+      var answer = this.model.answers().get(
+        parseInt(this._selected_answer)
+      );
+      var answer_choice = new OmniPoll.Models.AnswerChoice({
+        answer: answer
+      });
+      
+    }
   },
   
   addAnswer: function(answer){
@@ -46,6 +67,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     var content = this.template({
       question: this.model
     })
+
     this.$el.html(content);
     this.attachSubviews();
     

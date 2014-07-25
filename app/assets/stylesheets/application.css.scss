@@ -30,20 +30,22 @@ $orange : #EB7F00;
     color: white;
 }
 body {
-  background-image: -webkit-gradient(
-  	linear,
-  	left top,
-  	right bottom,
-  	color-stop(0.54, #F3FFE2),
-  	color-stop(1, #ACF0F2)
-  );
-//  background-color: $lightblue;
+//  background-image: -webkit-gradient(
+//    linear,
+//    left top,
+//    right bottom,
+//    color-stop(0.54, #F3FFE2),
+//    color-stop(1, #ACF0F2)
+//  );
+  background-color: $offwhite;
 //  background-size:  cover;
 //  background-repeat: no-repeat;
 }
 
 .jumbotron {
+  position: relative;
   background-color: #225378;
+  padding-bottom: 73px;
    
   //  border: solid #EB7F00;
 }
@@ -60,15 +62,15 @@ body {
 
 .label-default{
   background-color: $orange;
+  margin: 50%;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .chart {
-
   width: 50%;
-  margin: 0 auto;
+  margin: auto 0;
   margin-top: 27px;
 }
 
@@ -81,4 +83,10 @@ body {
   
 }
 
+#submit-vote{
+  float: right;
+  margin-bottom: 10px ;
+  border-radius: 47px ;
+  font-size: 17px;
+}
 

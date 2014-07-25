@@ -5,7 +5,6 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
     //generate colors base on the number of answers
     this.numAnswer = 0;
     this._data = [];
-    //find the canvas in our dom
   
     this._colors = ['#225378', 
                    '#1695A3', 
@@ -46,40 +45,8 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
   
     initChart: function(){
       var canvas = this.$('canvas')[0].getContext('2d');
-    
-   
-      // var pie_data   = [
-      // {
-      //   value: 300,
-      //   color:"#0D7DFF",
-      //  // highlight: "#FF5A5E",
-      //   label: "Red"
-      // },
-      // {
-      //   value: 400,
-      //   color: "#0CABE8",
-      //  // highlight: "#5AD3D1",
-      //   label: "Green"
-      // },
-      // {
-      //   value: 100,
-      //   color: "#00FCFF",
-      //   //highlight: "#FFC870",
-      //   label: "Yellow"
-      // },
-      // {
-      //   value: 100,
-      //   color: "#0CE8AC",
-      //   //highlight: "#FFC870",
-      //   label: "Yellow"
-      // },
-      // {
-      //   value: 100,
-      //   color: "#0DFF79",
-      // //  highlight: "#FFC870",
-      //   label: "Yellow"
-      // }
-      // ]
+      //sort based on size to get color priorities   
+     
       this.pieChart = new Chart(canvas).Pie(this._data, {
         animateRotate: true,
         animateScale: true,
