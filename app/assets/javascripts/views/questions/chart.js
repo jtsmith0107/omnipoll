@@ -7,30 +7,37 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
     this._data = [];
     //find the canvas in our dom
   
-    this._colors = ['0D5FFF', 
-                   '0DFF99', 
-                   '0C90E8',
-                   '0CE8CA', 
-                   '00DDFF'];
+    this._colors = ['#225378', 
+                   '#1695A3', 
+                   '#ACF0F2',
+                   '#F3FFE2', 
+                   '#EB7F00'];
+   this._highlights = ['#1C4563', 
+                   '#127985', 
+                   '#8FC8C9',
+                   '#B6BFA9', 
+                   '#D17100'];
+
   },
   
 
   addData: function(newData){
-      var elNum = this._data.length;
-
+      var elNum = this._data.length;      
+      
       var pieElement = { 
         value: newData.value,
         color: this._colors[elNum],
-        highlight: "#FF5A5E",
+        highlight: this._highlights[elNum],
         label: newData.label
       };
       this._data.push(pieElement);
-       this.render();
-      // this.pieChart.addData(pieElement);
+       // this.render();
+       // this.pieChart.addData([pieElement], );
       // this.pieChart.update();
     },
   
     render: function(){
+
       var content = this.template();
       this.$el.html(content);
       this.initChart();
@@ -41,43 +48,43 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
       var canvas = this.$('canvas')[0].getContext('2d');
     
    
-      var pie_data   = [
-      {
-        value: 300,
-        color:"#0D7DFF",
-       // highlight: "#FF5A5E",
-        label: "Red"
-      },
-      {
-        value: 400,
-        color: "#0CABE8",
-       // highlight: "#5AD3D1",
-        label: "Green"
-      },
-      {
-        value: 100,
-        color: "#00FCFF",
-        //highlight: "#FFC870",
-        label: "Yellow"
-      },
-      {
-        value: 100,
-        color: "#0CE8AC",
-        //highlight: "#FFC870",
-        label: "Yellow"
-      },
-      {
-        value: 100,
-        color: "#0DFF79",
-      //  highlight: "#FFC870",
-        label: "Yellow"
-      }
-      ]
-      this.pieChart = new Chart(canvas).Pie(pie_data, {
-        animateRotate: true, 
+      // var pie_data   = [
+      // {
+      //   value: 300,
+      //   color:"#0D7DFF",
+      //  // highlight: "#FF5A5E",
+      //   label: "Red"
+      // },
+      // {
+      //   value: 400,
+      //   color: "#0CABE8",
+      //  // highlight: "#5AD3D1",
+      //   label: "Green"
+      // },
+      // {
+      //   value: 100,
+      //   color: "#00FCFF",
+      //   //highlight: "#FFC870",
+      //   label: "Yellow"
+      // },
+      // {
+      //   value: 100,
+      //   color: "#0CE8AC",
+      //   //highlight: "#FFC870",
+      //   label: "Yellow"
+      // },
+      // {
+      //   value: 100,
+      //   color: "#0DFF79",
+      // //  highlight: "#FFC870",
+      //   label: "Yellow"
+      // }
+      // ]
+      this.pieChart = new Chart(canvas).Pie(this._data, {
+        animateRotate: true,
+        animateScale: true,
         segmentShowStroke: true
-      });   
-      debugger
+      }); 
     }
   
   });

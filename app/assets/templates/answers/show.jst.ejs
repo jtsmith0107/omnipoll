@@ -1,2 +1,4 @@
-<a href='#' class='list-group-item'>
-  <%= answer.escape('title') %>:<%= answer.escape('answer_choice_count') %></a>
+<li class='list-group-item'>
+  <%= answer.escape('title') %>
+   <span class="badge"><%= answer.escape('answer_choice_count') %></span>
+ </li>

@@ -15,3 +15,70 @@
  */
 
 @import "bootstrap";
+$darkblue : #225378;
+$teal : #1695A3;
+$lightblue : #ACF0F2;
+$offwhite : #F3FFE2;
+$orange : #EB7F00;
+
+
+.navbar{
+  background-color: $teal;
+
+}
+.navbar-default .navbar-brand{
+    color: white;
+}
+body {
+  background-image: -webkit-gradient(
+  	linear,
+  	left top,
+  	right bottom,
+  	color-stop(0.54, #F3FFE2),
+  	color-stop(1, #ACF0F2)
+  );
+//  background-color: $lightblue;
+//  background-size:  cover;
+//  background-repeat: no-repeat;
+}
+
+.jumbotron {
+  background-color: #225378;
+   
+  //  border: solid #EB7F00;
+}
+//#456
+.list-group {
+  margin-top: 30px;
+}
+
+.list-group-item{
+  background-color: $lightblue;
+  border: none;
+  margin: 5px;
+}
+
+.label-default{
+  background-color: $orange;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart {
+
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 27px;
+}
+
+.btn{
+  background-color: $orange;
+}
+
+.badge{
+  background-color: $orange;
+  
+}
+
+
