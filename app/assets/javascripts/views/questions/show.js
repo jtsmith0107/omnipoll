@@ -44,6 +44,8 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
         answer: answer
       });
       
+      answer_choice.save();
+      
     }
   },
   
