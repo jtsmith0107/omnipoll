@@ -4,6 +4,7 @@ OmniPoll.Views.AnswersShow = Backbone.View.extend({
    //  this._ensureElement();
    //  _.bindAll(this, 'render');
    //  this.render();
+   this.listenTo(this.model.answer_choices(), 'sync add', this.render)
   },
   tagName: 'li',
   

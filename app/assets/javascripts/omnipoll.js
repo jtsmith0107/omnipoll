@@ -9,6 +9,4 @@ window.OmniPoll = {
   }
 };
 
-$(document).ready(function(){
-  OmniPoll.initialize();
-});
+

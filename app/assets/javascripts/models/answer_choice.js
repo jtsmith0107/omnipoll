@@ -1,3 +1,9 @@
 OmniPoll.Models.AnswerChoice = Backbone.Model.extend({
-  rootUrl: 'api/answer_choices'
+  urlRoot: 'api/answerchoices',
+  
+  initialize: function(attributes, option){
+    this.answer_id = option.answer_id
+    // this.answer_id = this.answer.escape('id');
+  }
+  
 });

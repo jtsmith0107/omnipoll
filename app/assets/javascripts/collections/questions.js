@@ -14,6 +14,6 @@ OmniPoll.Collections.Questions = Backbone.Collection.extend({
     }
     return question;
   }
-})
+});
 
 OmniPoll.Collections.questions = new OmniPoll.Collections.Questions();

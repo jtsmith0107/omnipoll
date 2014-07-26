@@ -1,13 +1,13 @@
 OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
   routes: {
-    '' : 'questionShow'
+      '' : 'questionShow'
     
   },
   
   questionShow: function(){
     // request for the current question needed
     
-    
+
     //HARD CODING UNTIL QUESTIONS CHANGE PROPERLY
     var question = OmniPoll.Collections.questions.getOrFetch(3);
     //CHANGE ME!    

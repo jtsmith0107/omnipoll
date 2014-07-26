@@ -36,15 +36,32 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   
   submitVote: function(){
     if(!this._voted && this._selected_answer){
-      debugger
+
       var answer = this.model.answers().get(
         parseInt(this._selected_answer)
       );
-      var answer_choice = new OmniPoll.Models.AnswerChoice({
-        answer: answer
-      });
+      var answer_choice = new OmniPoll.Models.AnswerChoice(
+        {answer_id: answer.escape('id')},
+        {answer: answer});
       
-      answer_choice.save();
+      var show = this;
+      
+      answer_choice.save({}, {
+        success: function(){
+          
+          answer.answer_choices().add(answer_choice);
+          var count = answer.get('answer_choice_count');
+          answer.set({answer_choice_count: count});
+          
+          _.each(this.subviews('.list-group-item'), function(answerShow){
+            if ('data-id' === answer.escape('id')){
+              show.removeSubview('.list-group-item',answerShow);
+              addSubview('.list-group-item', answerShow);
+            }        
+          });
+
+        }
+      });
       
     }
   },
