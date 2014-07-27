@@ -10,9 +10,9 @@ class Api::QuestionsController < ApplicationController
   end
 
   def helloworld
-      Pusher['whatever_channel'].trigger('my_event', {
-      message: 'hello world'
-      })
+    Pusher['whatever_channel'].trigger('my_event', {
+      question: next_question.to_json
+    });
       render json: {}
   end
 
@@ -25,6 +25,7 @@ class Api::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @current_user = current_user
     #logic for current question...
     render :show
   end

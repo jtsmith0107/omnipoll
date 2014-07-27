@@ -12,6 +12,8 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     this.chartView = new OmniPoll.Views.ChartShow();
     this._voted = false
     
+    
+
     // this._subviews = {}
 
     // this.buttonView = new OmniPoll.Views.ButtonView();
@@ -51,12 +53,14 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
           
           answer.answer_choices().add(answer_choice);
           var count = answer.get('answer_choice_count');
-          answer.set({answer_choice_count: count});
+          answer.set({answer_choice_count: count + 1});
           
-          _.each(this.subviews('.list-group-item'), function(answerShow){
-            if ('data-id' === answer.escape('id')){
-              show.removeSubview('.list-group-item',answerShow);
-              addSubview('.list-group-item', answerShow);
+          _.each(show.subviews('.answers'), function(answerShow){
+            var data = answerShow.attributes()['data-id'];
+            if (data === answer.escape('id')){
+              answerShow.render()
+              // show.removeSubview('.answers',answerShow);
+              // show.addSubview('.answers', answerShow);
             }        
           });
 

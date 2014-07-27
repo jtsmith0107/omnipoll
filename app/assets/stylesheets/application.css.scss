@@ -60,9 +60,12 @@ body {
   margin: 5px;
 }
 
+.list-group-item .active{
+  background-color: $darkblue;
+}
+
 .label-default{
   background-color: $orange;
-  margin: 50%;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;

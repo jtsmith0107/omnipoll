@@ -1,5 +1,11 @@
+<!-- <%= link_to "hello", helloworld_url %> -->
 <div class="backdrop">
   <div id="main" class="container"></div>
 </div>
+<script>
+  window.currentUser = <%= current_user.to_json.html_safe %>;
+  window.currentQuestion = <%= current_question %>;
+</script>
 <script>$(OmniPoll.initialize);</script>
-<!-- <%= link_to "hello", helloworld_url %> -->
+
+

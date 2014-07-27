@@ -28,22 +28,14 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless signed_in?
   end
   
-  def current_question
-    if(session[:current_question_id])
-      Question.find(session[:current_question_id])
-    else
-      q = Question.all.sample
-      session[:current_question_id] = q.id
-      q
-    end
-  end
-  
-  
-  #from delayed_job gem, should continuously run, and sample a new question
-  def switch_question
-    20.seconds.from_now
-    session[:current_question_id] = Question.all.sample.id
-  end
-  
-  handle_asynchronously :switch_question
+  # def current_question
+  #   if(session[:current_question_id])
+  #     Question.find(session[:current_question_id])
+  #   else
+  #     q = Question.all.sample
+  #     session[:current_question_id] = q.id
+  #     q
+  #   end
+  # end
+
 end

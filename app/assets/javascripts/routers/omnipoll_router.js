@@ -1,7 +1,16 @@
 OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
+  initialize: function(){
+    var pusher = new Pusher('97e5d6642eaad569dab5');
+    var channel = pusher.subscribe('whatever_channel');
+    var router = this;
+    channel.bind('my_event', function(data) {
+      window.currentQuestion = data.question;
+      router.questionShow();
+    });
+  },
+  
   routes: {
-      '' : 'questionShow'
-    
+      '' : 'questionShow'    
   },
   
   questionShow: function(){
@@ -9,7 +18,7 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     
 
     //HARD CODING UNTIL QUESTIONS CHANGE PROPERLY
-    var question = OmniPoll.Collections.questions.getOrFetch(3);
+    var question = OmniPoll.Collections.questions.getOrFetch(parseInt(window.currentQuestion));
     //CHANGE ME!    
     
     

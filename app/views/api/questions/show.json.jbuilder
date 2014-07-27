@@ -6,3 +6,6 @@ json.answers @question.answers do |answer|
     json.extract! answer_choice, :user_id, :answer_id, :created_at, :updated_at
   end
 end
+if signed_in?
+  json.signed_in true
+end

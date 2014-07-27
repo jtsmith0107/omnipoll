@@ -10,6 +10,5 @@ module Omnipoll
   class Application < Rails::Application
     config.assets.paths << "app/assets/templates"
     config.assets.initialize_on_precompile = false
-
   end
 end

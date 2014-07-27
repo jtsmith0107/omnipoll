@@ -9,9 +9,9 @@ class Api::AnswerchoicesController < ApplicationController
       render :json => @answer_choice
     else
       if @answer_choice
-        render :json => @answer_choice.errors.full_messages
+        render :json => @answer_choice.errors.full_messages, status: :unprocessable_entity
       else
-        render :json => ["You are not logged in!"]
+        render :json => ["You are not logged in!"], status: :unprocessable_entity
       end
     end
   end
