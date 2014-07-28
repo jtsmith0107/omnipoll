@@ -11,8 +11,9 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.answers(), "add", this.addAnswer);
     this.chartView = new OmniPoll.Views.ChartShow();
     this._voted = false
-    
-    
+    var timeView = new OmniPoll.Views.TimeView();
+    this.addSubview('.timer', timeView);
+        
 
     // this._subviews = {}
 

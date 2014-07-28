@@ -11,7 +11,7 @@
 
 class Answerchoice < ActiveRecord::Base
   validates :user_id, :answer_id, presence: true
-  validates :user_id, uniqueness: true
+
   belongs_to :answer, counter_cache: :answer_choice_count
   belongs_to :user
 end

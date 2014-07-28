@@ -17,8 +17,7 @@
 //= require backbone
 //= require bootstrap
 //= require Chart
-//= require underscore
-//= require backbone
+//= require flipclock.min.js
 //= require omnipoll
 //= require_tree ../templates
 //= require_tree ./utils

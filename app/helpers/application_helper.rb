@@ -1,15 +1,23 @@
 module ApplicationHelper
   def switch_question
     # redirect_to root_url
-      next_question = Question.all.sample.id
-      debugger
-      # session[:current_question_id] = next_question.id
-      Pusher['whatever_channel'].trigger('my_event', {
-        question: next_question.to_json
-      });
+    @question = Question.all.sample
+
+    
+    @current_question = Currentquestion.first
+  
+    @current_question.update({
+      current_question_id: @question.id,
+      title: @question.title
+    })
+    
+    Pusher['whatever_channel'].trigger('my_event', {
+      question: @current_question.to_json
+    }) 
+  end
+  
+  def current_question
+    @current_question ||= Currentquestion.first
   end
 
-  def current_question 
-    current_question ||= 3
-  end
 end

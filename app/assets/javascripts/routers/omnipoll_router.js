@@ -4,7 +4,7 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     var channel = pusher.subscribe('whatever_channel');
     var router = this;
     channel.bind('my_event', function(data) {
-      window.currentQuestion = data.question;
+      window.currentQuestion = $.parseJSON(data.question);
       router.questionShow();
     });
   },
@@ -18,7 +18,7 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     
 
     //HARD CODING UNTIL QUESTIONS CHANGE PROPERLY
-    var question = OmniPoll.Collections.questions.getOrFetch(parseInt(window.currentQuestion));
+    var question = OmniPoll.Collections.questions.getOrFetch(parseInt(window.currentQuestion.current_question_id));
     //CHANGE ME!    
     
     

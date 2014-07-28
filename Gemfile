@@ -23,6 +23,7 @@ gem 'delayed_job_active_record'
 gem 'delayed_job'
 gem 'chart-js-rails'
 gem 'backbone-on-rails'
+gem 'clockwork'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
