@@ -1,7 +1,7 @@
 OmniPoll.Views.QuestionNew = Backbone.View.extend({
   template: JST['questions/new'],
   
-  answerTemplate: JST['answers/new'],
+  answerTemplate: JST['answers/form'],
   
   initialize: function(){
     this._answerCount = 2;
@@ -15,14 +15,9 @@ OmniPoll.Views.QuestionNew = Backbone.View.extend({
   addAnswer: function(event){
     
     this._answerCount++;
-    $('#answer-' + this._answerCount).attr('type', 'text');
+    var content = this.answerTemplate();
+    this.$el.append(content);
     
-    // <div class="form-group">
-//       <label for="answer-1" class="col-sm-2 control-label">Answer 1</label>
-//       <div class="col-sm-10">
-//         <input type="text" class="form-control" id="answer-1" placeholder="Answer 1">
-//       </div>
-//     </div>
   },
   
   render: function(){
