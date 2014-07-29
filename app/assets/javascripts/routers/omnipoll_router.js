@@ -5,27 +5,32 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     var router = this;
     channel.bind('my_event', function(data) {
       window.currentQuestion = $.parseJSON(data.question);
-      router.questionShow();
+      if(Backbone.history.fragment === ''){
+        router.questionShow();
+      }
     });
+    this._subviews = {}
+
+
   },
   
   routes: {
-      '' : 'questionShow'    
+      '' : 'questionShow',
+      'questions/new' : 'questionNew'
   },
   
   questionShow: function(){
-    // request for the current question needed
-    
-
-    //HARD CODING UNTIL QUESTIONS CHANGE PROPERLY
     var question = OmniPoll.Collections.questions.getOrFetch(parseInt(window.currentQuestion.current_question_id));
-    //CHANGE ME!    
-    
     
     var showView = new OmniPoll.Views.QuestionsShow({
       model: question
     });
     this._swapView(showView);
+  },
+  
+  questionNew: function(){
+    var newView = new OmniPoll.Views.QuestionNew();
+    this._swapView(newView);
   },
   
   _swapView: function(newView){

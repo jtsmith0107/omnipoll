@@ -1,9 +1,7 @@
 OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   template: JST['questions/show'],
   
-
-  
-  className: 'jumbotron',
+  className: 'jumbotron question-show',
   
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
@@ -12,29 +10,44 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     this.chartView = new OmniPoll.Views.ChartShow();
     this._voted = false
     var timeView = new OmniPoll.Views.TimeView();
-    this.addSubview('.timer', timeView);
-        
+    this.addSubview('.timer', timeView);     
 
-    // this._subviews = {}
-
-    // this.buttonView = new OmniPoll.Views.ButtonView();
-    // this.addSubview('.button', this.chartView);
-
+    this.buttonView = new OmniPoll.Views.ButtonView();
+    this.addSubview('.button', this.chartView);
     this.model.answers().each(this.addAnswer.bind(this));
 
   },
   
   events: {
     'click .list-group-item' : 'selectAnswer',
-    'click #submit-vote' : 'submitVote'
+    'click #submit-vote' : 'submitVote',
+    'click .create-answer' : 'addAnswer'
   },
   
   selectAnswer: function(event){
+    
     if(!this._voted){
-      $('.list-group-item').removeClass('active');
-      $(event.currentTarget).addClass('active');  
+      
+      if($(event.currentTarget).hasClass('active') === true){
+        $('.list-group-item').removeClass('active');    
+      }else{
+        $('.list-group-item').removeClass('active'); 
+       $(event.currentTarget).toggleClass('active');  
+      }   
       this._selected_answer = $(event.currentTarget).attr('data-id');          
     }
+  },
+  
+  createAnswer: function(){
+    event.preventDefault();
+    var params = $(event.currentTarget).serializeJSON();
+    var newAnswer = new OmniPoll.Models.Question(params['answer']);
+    newAnswer.question_id = window.currentQuestion;
+    newAnswer.save({}, {
+      success: function(){
+        this.addAnswer(newAnswer);
+      }
+    })
   },
   
   submitVote: function(){
@@ -45,7 +58,8 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
       );
       var answer_choice = new OmniPoll.Models.AnswerChoice(
         {answer_id: answer.escape('id')},
-        {answer: answer});
+        {answer: answer}
+      );
       
       var show = this;
       
@@ -59,15 +73,13 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
           _.each(show.subviews('.answers'), function(answerShow){
             var data = answerShow.attributes()['data-id'];
             if (data === answer.escape('id')){
-              answerShow.render()
+              answerShow.render();
               // show.removeSubview('.answers',answerShow);
               // show.addSubview('.answers', answerShow);
             }        
           });
-
         }
-      });
-      
+      });      
     }
   },
   

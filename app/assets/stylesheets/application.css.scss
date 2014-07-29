@@ -27,7 +27,10 @@ $orange : #EB7F00;
 
 }
 .navbar-default .navbar-brand{
-    color: white;
+  color: white;
+}
+.nav > li{
+  margin-right: 7px;
 }
 body {
 //  background-image: -webkit-gradient(
@@ -42,16 +45,52 @@ body {
 //  background-repeat: no-repeat;
 }
 
-.jumbotron {
+.question-show {
   position: relative;
   background-color: #225378;
   padding-bottom: 73px;
    
   //  border: solid #EB7F00;
 }
+
+.question-show-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  
+  .question-label {
+    margin-left: 0px;
+    height: 40px;
+    padding: 10px;
+    &:hover {
+     background-color: #D17100; 
+    }
+  }
+  
+  .question-timer {
+    margin-right: 0px;
+    height: 40px;
+    
+    .textDiv_Seconds {
+      width: 150px;
+      margin-top: -104px;
+      margin-right: -100px;
+      padding-right: -100px;
+      margin-left: 54px;
+    }
+  }
+}
+
+
+
 //#456
 .list-group {
   margin-top: 30px;
+  li{
+    &:hover{
+      background-color: #9AD7D9 ;
+    }
+  }
 }
 
 .list-group-item{
@@ -69,6 +108,7 @@ body {
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
+  display: inline-block;
 }
 
 .chart {
@@ -82,13 +122,23 @@ canvas {
   margin-right: auto;
 }
 
-.btn{
+.btn-default{
   background-color: $orange;
+  border-radius: 47px;
+  &:hover{
+    background-color: #D17100;
+  };
 }
 
 .badge{
   background-color: $orange;
   
+}
+
+#create-answer{
+  float:left;
+  margin-bottom: 10px ;
+  font-size: 17px;
 }
 
 #submit-vote{
@@ -98,3 +148,44 @@ canvas {
   font-size: 17px;
 }
 
+.countdown-container {
+position: relative;
+top: 50%;
+-webkit-transform: translateY(-50%);
+-moz-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+.clock-item .inner {
+height: 0px;
+padding-bottom: 100%;
+position: relative;
+width: 100%;
+}
+.clock-canvas {
+background-color: rgba(255, 255, 255, .1);
+border-radius: 50%;
+height: 0px;
+padding-bottom: 100%;
+}
+.text {
+color: #fff;
+font-size: 30px;
+font-weight: bold;
+margin-top: -50px;
+position: absolute;
+top: 50%;
+text-align: center;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+width: 100%;
+}
+.text .val {
+font-size: 50px;
+}
+.text .type-time {
+font-size: 20px;
+}
+
+//.timer{
+//  width: 200px;
+//  height: 200px;
+//}

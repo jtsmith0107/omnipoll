@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= jquery.serializeJSON
+//= require jquery.countdown
+//= require TimeCircles
 //= require underscore
 //= require backbone
 //= require bootstrap
 //= require Chart
-//= require flipclock.min.js
+//= require serialize_json
 //= require omnipoll
 //= require_tree ../templates
 //= require_tree ./utils

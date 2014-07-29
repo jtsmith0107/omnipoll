@@ -45,6 +45,7 @@ end
  gem 'bcrypt', '~> 3.1.7'
  gem 'pusher'
  gem 'figaro'
+ gem 'serialize_json-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
