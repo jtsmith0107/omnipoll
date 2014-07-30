@@ -1,19 +1,13 @@
 class Api::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
-
+    
+    @question.answers.new(question_params)
     if @question.save
       render json: @question
     else
       render json: @question.errors.full_messages, status: :unprocessable_entity
     end
-  end
-
-  def helloworld
-    Pusher['whatever_channel'].trigger('my_event', {
-      question: next_question.to_json
-    });
-      render json: {}
   end
 
   def destroy
@@ -40,6 +34,13 @@ class Api::QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title)
+  end
+  
+  def answer_params
+    params.permit(:answers => [:title])
+           .require(:answers)
+           .values
+           .reject { |data| data.values.all?(&:blank?) }
   end
 
 end

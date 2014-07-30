@@ -3,7 +3,8 @@
     <label for="question-title" 
     class="col-sm-8"
     name="question[title]">Question</label>
-      <input type="text" class="form-control" id="question-title" placeholder="Question">
+      <input type="text" class="form-control" id="question-title" 
+      name="question[title]" placeholder="Question">
   </div>
   
   <label for='answers-group' name='answers' class='col-sm-8'>    </label>
@@ -11,7 +12,7 @@
     <div class='answer-form'>  
      <div class="col-sm-7">
       <input type="text" class="form-control" id="answer-1"
-      placeholder="Answer Title" name="answers[][title]">
+      placeholder="Answer Title" name="answers[title][]">
 
     </div>
       <button class='remove-btn btn btn-danger btn-xs col-sm-1'>
@@ -20,7 +21,7 @@
     <div class='answer-form'>    
     <div class="col-sm-7">
       <input type="text" class="form-control" id="answer-2"
-      placeholder="Answer Title" name="answers[][title]">
+      placeholder="Answer Title" name="answers[title][]">
     </div>
       <button class='remove-btn btn btn-danger btn-xs col-sm-1'>
         <span class="glyphicon glyphicon-remove"></span></button>

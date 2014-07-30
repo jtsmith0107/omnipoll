@@ -10,7 +10,7 @@
 #
 
 class Answer < ActiveRecord::Base
-  validates :title, :question_id, presence: true
+  validates :title, :question, presence: true
   
   belongs_to :question
   has_many :answer_choices, 
