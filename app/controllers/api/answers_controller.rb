@@ -21,6 +21,10 @@ class Api::AnswersController < ApplicationController
       render :json => @answer.errors.full_messages
     end
   end
+  
+  def answer_params
+    params.require(:answer).permit(:question_id, :title)
+  end
 
 
 end

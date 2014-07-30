@@ -25,7 +25,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   events: {
     'click .list-group-item' : 'selectAnswer',
     'click #submit-vote' : 'submitVote',
-    'click .create-answer' : 'addAnswer',
+    'click .create-answer' : 'createAnswer',
     'click #new-question': 'questionNew'
   },
   
@@ -47,14 +47,16 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     }
   },
   
-  createAnswer: function(){
+  createAnswer: function(event){
     event.preventDefault();
-    var params = $(event.currentTarget).serializeJSON();
-    var newAnswer = new OmniPoll.Models.Question(params['answer']);
-    newAnswer.question_id = window.currentQuestion;
+    var params = $('#modal-form').serializeJSON();
+    var newAnswer = new OmniPoll.Models.Answer(params['answer']);
+    newAnswer.set('question_id', window.currentQuestion.current_question_id);
+    var showView = this
     newAnswer.save({}, {
       success: function(){
-        this.addAnswer(newAnswer);
+        showView.addAnswer(newAnswer);
+        $("#answerModal").modal('hide');
       }
     })
   },
