@@ -8,16 +8,27 @@ OmniPoll.Views.QuestionNew = Backbone.View.extend({
   },
   
   events: {
-    'click add-btn' : 'addAnswer',
-    'submit form' : 'submit'
+    'click #add-answer' : 'addAnswer',
+    'submit form' : 'submit',
+    'click .remove-btn' : 'removeAnswer'
   },
   
   addAnswer: function(event){
-    
-    this._answerCount++;
-    var content = this.answerTemplate();
-    this.$el.append(content);
-    
+    event.preventDefault();
+    if(this._answerCount < 10){
+      this._answerCount++;
+      var content = this.answerTemplate();
+      this.$('.form-group.answers-group').append(content);
+    }    
+  },
+  
+  removeAnswer: function(event){
+    event.preventDefault();
+
+    if(this._answerCount > 2){
+          this._answerCount--;
+       $(event.currentTarget.parentElement).remove()
+     }
   },
   
   render: function(){

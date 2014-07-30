@@ -6,12 +6,16 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
     // this.listenTo(this.model.answers(), "sync remove", this.render);
+
     this.listenTo(this.model.answers(), "add", this.addAnswer);
     this.chartView = new OmniPoll.Views.ChartShow();
     this._voted = false
+    
+    $('.nav').prepend('<li>' + JST['questions/link_new']()+'</li>')
+    
     var timeView = new OmniPoll.Views.TimeView();
     this.addSubview('.timer', timeView);     
-
+    
     this.buttonView = new OmniPoll.Views.ButtonView();
     this.addSubview('.button', this.chartView);
     this.model.answers().each(this.addAnswer.bind(this));
@@ -21,7 +25,12 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   events: {
     'click .list-group-item' : 'selectAnswer',
     'click #submit-vote' : 'submitVote',
-    'click .create-answer' : 'addAnswer'
+    'click .create-answer' : 'addAnswer',
+    'click #new-question': 'questionNew'
+  },
+  
+  questionNew: function(){
+    Backbone.history.navigate('questions/new');
   },
   
   selectAnswer: function(event){

@@ -134,19 +134,14 @@ canvas {
   background-color: $orange;
   
 }
-
-#create-answer{
-  float:left;
-  margin-bottom: 10px ;
-  font-size: 17px;
-}
-
 #submit-vote{
   float: right;
   margin-bottom: 10px ;
   border-radius: 47px ;
   font-size: 17px;
 }
+
+// Timer styling
 
 .countdown-container {
 position: relative;
@@ -184,6 +179,49 @@ font-size: 50px;
 .text .type-time {
 font-size: 20px;
 }
+
+/*
+
+Quesiton form formatting
+
+
+
+*/
+button.remove-btn.btn.btn-danger.btn-xs.col-sm-1 {
+  border-radius: 45px;
+  width: 23px;
+  margin-left: -11px;
+  margin-top: 5px;
+}
+
+button#add-answer{
+  border-radius: 45px;
+  width: 23px;
+  margin-top: -24px;
+  margin-left: 16px;
+}
+
+button#submit-form {
+display: block;
+}
+
+a > #new-question{
+  margin-top: -7px;
+  margin-right: -8px;
+  /* padding-top: 9px; */
+  height: 34px;
+  font-size: 14px;
+}
+
+#create-answer{
+  float:left;
+  margin-bottom: 10px ;
+  font-size: 17px;
+}
+
+
+
+
 
 //.timer{
 //  width: 200px;
