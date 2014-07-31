@@ -227,10 +227,42 @@ a > #new-question{
 }
 
 
+// History Page
+.history-show {
+  border-radius: 6px;
+  height: 282px;
+  background-color: $darkblue;
+}
 
+.answers-col.col-sm-6 {
+  margin-left: 43px;
+  margin-top: 39px;
+}
 
+.title-col.col-sm-6 {
+  margin-left: -43px;
+  margin-top: -23px;
+}
 
 //.timer{
 //  width: 200px;
 //  height: 200px;
 //}
+
+
+//Header Styling
+
+form.button_to {
+  margin-top: 15px;
+  margin-left: -15px;
+}
+
+a > #new-question {
+  margin-top: -6px;
+  margin-right: -26px;
+}
+
+.navbar-btn {
+margin-top: -6px;
+margin-bottom: -3px;
+}

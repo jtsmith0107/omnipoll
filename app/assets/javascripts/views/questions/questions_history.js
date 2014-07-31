@@ -6,6 +6,7 @@ OmniPoll.Views.HistoryView = Backbone.CompositeView.extend({
   initialize: function(){
     this.listenTo(this.collection, 'add', this.addQuestion);
     this.listenTo(this.collection, 'sync', this.render);
+    this.collection.each(this.addQuestion.bind(this));
   },
   
   addQuestion: function(question){
