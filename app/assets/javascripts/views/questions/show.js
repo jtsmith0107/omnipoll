@@ -8,10 +8,11 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     // this.listenTo(this.model.answers(), "sync remove", this.render);
 
     this.listenTo(this.model.answers(), "add", this.addAnswer);
-    this.chartView = new OmniPoll.Views.ChartShow();
+    this.chartView = new OmniPoll.Views.ChartShow({canvasSize: 350});
     this._voted = false
-    
-    $('.nav').prepend('<li>' + JST['questions/link_new']()+'</li>')
+    if($('.nav').find('#new-question').length < 1){
+      $('.nav').prepend('<li>' + JST['questions/link_new']()+'</li>')
+    }
     
     var timeView = new OmniPoll.Views.TimeView();
     this.addSubview('.timer', timeView);     

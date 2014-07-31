@@ -17,3 +17,4 @@ OmniPoll.Collections.Questions = Backbone.Collection.extend({
 });
 
 OmniPoll.Collections.questions = new OmniPoll.Collections.Questions();
+OmniPoll.Collections.completedQuestions = new OmniPoll.Collections.Questions();

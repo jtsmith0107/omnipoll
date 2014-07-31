@@ -3,20 +3,23 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     var pusher = new Pusher('97e5d6642eaad569dab5');
     var channel = pusher.subscribe('whatever_channel');
     var router = this;
+    
+    
     channel.bind('my_event', function(data) {
       window.currentQuestion = $.parseJSON(data.question);
       if(Backbone.history.fragment === ''){
         router.questionShow();
       }
     });
-    this._subviews = {}
+    // this._subviews = {}
 
 
   },
   
   routes: {
       '' : 'questionShow',
-      'questions/new' : 'questionNew'
+      'questions/new' : 'questionNew',
+      'questions/history' : 'questionHistory'
   },
   
   questionShow: function(){
@@ -31,6 +34,16 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
   questionNew: function(){
     var newView = new OmniPoll.Views.QuestionNew();
     this._swapView(newView);
+  },
+  
+  questionHistory: function(){
+    OmniPoll.Collections.completedQuestions.fetch({
+      data: {completed: true}
+    });
+    var historyView = new OmniPoll.Views.HistoryView({
+      collection: OmniPoll.Collections.completedQuestions
+    });
+    this._swapView(historyView);
   },
   
   _swapView: function(newView){

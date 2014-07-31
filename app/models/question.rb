@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   
   has_many :answers
+  has_many :answerchoices, through: :answers, source: :answerschoices
   
   
   def switch_question

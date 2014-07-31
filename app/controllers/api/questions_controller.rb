@@ -26,8 +26,15 @@ class Api::QuestionsController < ApplicationController
 
   # Only needed for potential previous pol'ls view
   def index
-    @questions = Question.all
-    render json: @questions
+    if params[:completed]
+       @questions = Question
+           .joins(:answers)
+           .where('completed = ?', true)
+           .group('questions.id')
+    else
+       @questions = Question.joins(:answers).all
+    end
+    render json: @questions.as_json( include: { :answers => { include: [:answerchoices]} } )
   end
 
   private

@@ -11,8 +11,11 @@
 
 class Answer < ActiveRecord::Base
   validates :title, :question, presence: true
+
   
   belongs_to :question
-  has_many :answer_choices, 
+  has_many :answerchoices, 
   class_name: :Answerchoice
+  
+  has_many :users, through: :answerchoices, source: :user
 end

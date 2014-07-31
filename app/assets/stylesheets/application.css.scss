@@ -22,8 +22,15 @@ $offwhite : #F3FFE2;
 $orange : #EB7F00;
 
 
+
+
+
 .navbar{
   background-color: $teal;
+  img{
+    float:left;
+    margin-top: 7px;
+  }
 
 }
 .navbar-default .navbar-brand{
