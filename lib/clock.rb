@@ -16,5 +16,5 @@ include ApplicationHelper
   #   puts "Running #{job}, at #{time}"
   # end
 
-every(2.minutes, 'switch.question') {QuestionSwitchJob.new.perform}
+every(1.minutes, 'switch.question') {QuestionSwitchJob.new.perform}
 # every(30.minutes, 'reset_questions') {}
