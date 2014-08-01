@@ -23,9 +23,9 @@ $orange : #EB7F00;
 
 
 
-
-
-
+.alert-success{
+  margin-top: 15px;
+}
 body {
 //  background-image: -webkit-gradient(
 //    linear,
@@ -36,7 +36,12 @@ body {
 //  );
 //  background-color: $offwhite;
 *{
-  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 }
@@ -86,20 +91,24 @@ margin-top: 15px;
   .question-timer {
     margin-right: 0px;
     height: 40px;
+
     
     .textDiv_Seconds {
       width: 150px;
       margin-top: -104px;
       margin-right: -100px;
       padding-right: -100px;
-      margin-left: 54px;
+      margin-left: 62px;
     }
     .textDiv_Minutes {
       width: 150px;
       margin-top: -104px;
       margin-right: -100px;
       padding-right: -100px;
-      margin-left: 54px;
+      margin-left: 62px;
+      h4{
+        line-height: 0px;
+      }
     }
   }
 }
@@ -111,7 +120,7 @@ margin-top: 15px;
   margin-top: 30px;
   li{
     &:hover{
-      background-color: #9AD7D9 ;
+      opacity: 0.9 ;
     }
   }
 }

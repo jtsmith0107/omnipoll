@@ -4,9 +4,9 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
   className: "timer",
   
   render: function(){
-    var switchTime = Math.floor(5- window.questionTimer );
+    var switchTime = Math.floor(2- window.questionTimer );
     if(switchTime < 1){
-      switchTime = 5 * 60
+      switchTime = 2 * 60
     }
     var content = this.template({
       time: switchTime
@@ -24,7 +24,7 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
            "Seconds": { "color": "#EB7F00", "show":false }
          }
       });
-
+      // ('textDiv_Minutes').prepend('<h4>Remaining</h4>')
     //flip clock
     // var clock = this.$el.FlipClock(switchTime, {
     //   countdown: true,

@@ -6,13 +6,15 @@ OmniPoll.Views.QuestionHistoryShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.answers(), 'add', this.addAnswer);
     this.listenTo(this.model.answers(), 'sync', this.render)
     this.chartView = new OmniPoll.Views.ChartShow({canvasSize: 150});
+    this.answerCount = 0;
     this.model.answers().each(this.addAnswer.bind(this));
 
   },
   
   addAnswer: function(answer){
     var answerView = new OmniPoll.Views.AnswersShow({
-      model: answer
+      model: answer,
+      color: OmniPoll.colors[this.answerCount++]
     });
     this.removeSubview('.chart', this.chartView);
         

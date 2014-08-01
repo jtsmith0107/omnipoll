@@ -20,6 +20,8 @@ OmniPoll.Views.HistoryView = Backbone.CompositeView.extend({
     var content = this.template({
       questions: this.collection
     });
+    
+    //change button to current poll button
 
     this.$el.html(content);
     this.attachSubviews();

@@ -61,7 +61,8 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     var showView = this
     newAnswer.save({}, {
       success: function(){
-        showView.addAnswer(newAnswer);
+        showView.model.answers().add(newAnswer);
+        // showView.addAnswer(newAnswer);
         $("#answerModal").modal('hide');
       }
     })
@@ -111,9 +112,8 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     var show = this
     var answerView = new OmniPoll.Views.AnswersShow({
       model: answer,
-      color: OmniPoll.colors[show.answerCount]
+      color: OmniPoll.colors[show.answerCount++]
     });
-    show.answerCount++;
     show.removeSubview('.chart', show.chartView);
         
     chartData = {

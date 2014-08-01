@@ -1,14 +1,15 @@
 module ApplicationHelper
   def switch_question
-    recycled_question = Question.where('completed = true').first
+    #set question
+    recycled_question = Question.where('completed = true').sample
   
     recycled_question.update_attributes({completed: false})  if recycled_question
-    
+
     @current_question = Currentquestion.first
     # .select('question.*')
     # .joins('questions')
     # .where('question.id = currentquestions.current_question_id')
-    # .first
+    # .first 
 
     Question.find(@current_question.current_question_id).update_attributes(completed: true);
     
