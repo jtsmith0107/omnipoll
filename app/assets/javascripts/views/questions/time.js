@@ -4,9 +4,9 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
   className: "timer",
   
   render: function(){
-    var switchTime = Math.floor(30 - (Date.now()/1000 - window.questionTimer));
+    var switchTime = Math.floor(5 - (Date.now()/1000 - window.questionTimer)/60);
     if(switchTime < 1){
-      switchTime = 30
+      switchTime = 5
     }
     var content = this.template({
       time: switchTime
@@ -20,8 +20,8 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
        "time": {
             "Days" :{ "color": "#C0C8CF", "show": false },
            "Hours": { "color": "#C0C8CF", "show": false },
-           "Minutes": { "color": "#C0C8CF", "show": false },
-           "Seconds": { "color": "#EB7F00", "show":true }
+           "Minutes": { "color": "#EB7F00", "show": true },
+           "Seconds": { "color": "#EB7F00", "show":false }
          }
       });
 

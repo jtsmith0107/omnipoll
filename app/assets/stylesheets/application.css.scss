@@ -25,20 +25,7 @@ $orange : #EB7F00;
 
 
 
-.navbar{
-  background-color: $teal;
-  img{
-    float:left;
-    margin-top: 7px;
-  }
 
-}
-.navbar-default .navbar-brand{
-  color: white;
-}
-.nav > li{
-  margin-right: 7px;
-}
 body {
 //  background-image: -webkit-gradient(
 //    linear,
@@ -47,9 +34,27 @@ body {
 //    color-stop(0.54, #F3FFE2),
 //    color-stop(1, #ACF0F2)
 //  );
-  background-color: $offwhite;
-//  background-size:  cover;
-//  background-repeat: no-repeat;
+//  background-color: $offwhite;
+*{
+  
+}
+
+}
+form.button_to {
+margin-top: 15px;
+margin-left: 2px;
+}
+
+#splash{
+  background-size:  cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 52px;
+  left: 0px;
+  
+  background-image: url("audience-splash.jpg");
 }
 
 .question-show {
@@ -59,7 +64,12 @@ body {
    
   //  border: solid #EB7F00;
 }
-
+.answers-col{
+  li.list-group-item {
+  height: 30px;
+  font-size: 13px;
+  }
+}
 .question-show-head {
   display: flex;
   flex-direction: row;
@@ -69,9 +79,9 @@ body {
     margin-left: 0px;
     height: 40px;
     padding: 10px;
-    &:hover {
-     background-color: #D17100; 
-    }
+//    &:hover {
+//     background-color: #148591;
+//    }
   }
   
   .question-timer {
@@ -79,6 +89,13 @@ body {
     height: 40px;
     
     .textDiv_Seconds {
+      width: 150px;
+      margin-top: -104px;
+      margin-right: -100px;
+      padding-right: -100px;
+      margin-left: 54px;
+    }
+    .textDiv_Minutes {
       width: 150px;
       margin-top: -104px;
       margin-right: -100px;
@@ -111,7 +128,7 @@ body {
 }
 
 .label-default{
-  background-color: $orange;
+  background-color: $teal;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -230,7 +247,7 @@ a > #new-question{
 // History Page
 .history-show {
   border-radius: 6px;
-  height: 282px;
+//  height: 282px;
   background-color: $darkblue;
 }
 
@@ -252,17 +269,40 @@ a > #new-question{
 
 //Header Styling
 
+.navbar{
+  background-color: $teal;
+  img{
+    float:left;
+    margin-top: 7px;
+  }
+
+}
+.navbar-default .navbar-brand{
+  color: white;
+}
+.nav > li{
+  margin-right: 7px;
+}
+
 form.button_to {
   margin-top: 15px;
   margin-left: -15px;
 }
 
 a > #new-question {
-  margin-top: -6px;
+  margin-top: -20px;
   margin-right: -26px;
+  margin-bottom: -15px;
 }
 
 .navbar-btn {
-margin-top: -6px;
-margin-bottom: -3px;
+margin-top: -17px;
+margin-bottom: -13px;
 }
+
+.backdrop{
+  text-align:center;
+  margin-top: 20%;
+}
+
+

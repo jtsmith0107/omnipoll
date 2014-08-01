@@ -8,7 +8,7 @@
       <span class="icon-bar"></span>
     </button>
     <%= image_tag "logo2.png" %>
-    <a class="navbar-brand" href="/#/">OmniPoll</a>
+    <a class="navbar-brand" href="/#/questions/home">OmniPoll</a>
   </div>
 
 
@@ -17,7 +17,7 @@
     <ul class="nav navbar-nav">
     <% if signed_in? %>
     <li><a class='text-left' href="/#/questions/history"><button class='btn btn-default navbar-btn'>
-      View Previous Questions</button></a></li>
+      Past Polls</button></a></li>
     <li>
   <%= button_to "Sign out", session_url, method: :delete, class: "btn btn-default navbar-btn" %>
   </li>

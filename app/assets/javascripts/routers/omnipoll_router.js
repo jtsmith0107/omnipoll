@@ -7,7 +7,7 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     
     channel.bind('my_event', function(data) {
       window.currentQuestion = $.parseJSON(data.question);
-      if(Backbone.history.fragment === ''){
+      if(Backbone.history.fragment === 'questions/home'){
         router.questionShow();
       }
     });
@@ -17,9 +17,15 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
   },
   
   routes: {
-      '' : 'questionShow',
+      '' : '',
+      'questions/home' : 'questionShow',
       'questions/new' : 'questionNew',
       'questions/history' : 'questionHistory'
+  },
+  
+  splash: function(){
+    var splashView = new OmniPoll.Views.SplashView();
+    this._swapView(splashView);
   },
   
   questionShow: function(){

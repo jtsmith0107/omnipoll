@@ -1,12 +1,16 @@
 <!-- <%= link_to "hello", helloworld_url %> -->
-<div class="backdrop">
-  <div id="main" class="container"></div>
+<div id="splash">
+  <div class="backdrop">
+    <a class="poll-button" href='/#/questions/home'><button class='btn btn-default'>Check Out the Current Poll!</button></a>
+    <a class="poll-button" href='/#/questions/home'><button class='btn btn-default'>Guest Login</button></a>
+  </div>
+  
 </div>
 <script>
-  window.currentUser = <%= current_user.to_json.html_safe %>;
-  window.currentQuestion = <%= current_question.to_json.html_safe %>;
-  window.questionTimer = <%= current_question.updated_at.to_i %>
-  //make a voted global
+window.currentUser = <%= current_user.to_json.html_safe %>;
+window.currentQuestion = <%= current_question.to_json.html_safe %>;
+window.questionTimer = <%= current_question.updated_at.to_i %>
+//make a voted global
 </script>
 <script>$(OmniPoll.initialize);</script>
 

@@ -13,6 +13,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     if($('.nav').find('#new-question').length < 1){
       $('.nav').prepend('<li>' + JST['questions/link_new']()+'</li>')
     }
+    $('body').attr('style', 'background-color: #F3FFE2')
     
     var timeView = new OmniPoll.Views.TimeView();
     this.addSubview('.timer', timeView);     

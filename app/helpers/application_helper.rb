@@ -1,10 +1,16 @@
 module ApplicationHelper
   def switch_question
-    @question = Question.where('completed = false').first
-        
+    Question.where('completed = true').first.update_attributes({completed: false});
+    
     @current_question = Currentquestion.first
+    # .select('question.*')
+    # .joins('questions')
+    # .where('question.id = currentquestions.current_question_id')
+    # .first
 
     Question.find(@current_question.current_question_id).update_attributes(completed: true);
+    
+    @question = Question.where('completed = false').first
     
     @current_question.update({
       current_question_id: @question.id,
