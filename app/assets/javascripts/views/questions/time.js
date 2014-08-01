@@ -4,9 +4,9 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
   className: "timer",
   
   render: function(){
-    var switchTime = Math.floor(5 - (Date.now()/1000 - window.questionTimer)/60);
+    var switchTime = Math.floor(5- window.questionTimer );
     if(switchTime < 1){
-      switchTime = 5
+      switchTime = 5 * 60
     }
     var content = this.template({
       time: switchTime

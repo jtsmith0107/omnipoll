@@ -54,6 +54,7 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
   
   _swapView: function(newView){
     if(this.currentView){
+      //ANIMATION!!!
       this.currentView.remove();
     } 
     $('#main').html(newView.render().$el);

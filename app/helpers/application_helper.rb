@@ -25,7 +25,7 @@ module ApplicationHelper
   end
   
   def current_question
-    @current_question ||= Currentquestion.first
+    Currentquestion.first
   end
 
 end

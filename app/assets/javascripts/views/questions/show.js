@@ -20,6 +20,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     
     this.buttonView = new OmniPoll.Views.ButtonView();
     this.addSubview('.button', this.chartView);
+    this.answerCount = 0;
     this.model.answers().each(this.addAnswer.bind(this));
 
   },
@@ -40,10 +41,13 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     if(!this._voted){
       
       if($(event.currentTarget).hasClass('active') === true){
-        $('.list-group-item').removeClass('active');    
+        $('.list-group-item').removeClass('active');
+        $('.list-group-item').css('border' , "")
       }else{
-        $('.list-group-item').removeClass('active'); 
+      $('.list-group-item').removeClass('active'); 
+      $('.list-group-item').css('border' , "")
        $(event.currentTarget).toggleClass('active');  
+       $(event.currentTarget).css('border' , "1px solid white")
       }   
       this._selected_answer = $(event.currentTarget).attr('data-id');          
     }
@@ -91,31 +95,35 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
           
           _.each(show.subviews('.answers'), function(answerShow){
             var data = answerShow.attributes()['data-id'];
-            if (data === answer.escape('id')){
+            // if (data === answer.escape('id')){
               answerShow.render();
               // show.removeSubview('.answers',answerShow);
               // show.addSubview('.answers', answerShow);
-            }        
+            // }   
           });
+          this.chartView.render()
         }
       });      
     }
   },
   
   addAnswer: function(answer){
+    var show = this
     var answerView = new OmniPoll.Views.AnswersShow({
-      model: answer
+      model: answer,
+      color: OmniPoll.colors[show.answerCount]
     });
-    this.removeSubview('.chart', this.chartView);
+    show.answerCount++;
+    show.removeSubview('.chart', show.chartView);
         
     chartData = {
       value: parseInt(answer.escape('answer_choice_count')),
       label: answer.escape('title')
     }
 
-    this.chartView.addData(chartData);
-    this.addSubview('.answers', answerView);
-    this.addSubview('.chart', this.chartView);
+    show.chartView.addData(chartData);
+    show.addSubview('.answers', answerView);
+    show.addSubview('.chart', show.chartView);
   },
   
   render: function(){

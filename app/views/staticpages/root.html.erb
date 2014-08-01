@@ -9,7 +9,7 @@
 <script>
 window.currentUser = <%= current_user.to_json.html_safe %>;
 window.currentQuestion = <%= current_question.to_json.html_safe %>;
-window.questionTimer = <%= current_question.updated_at.to_i %>
+window.questionTimer = <%= Time.now().to_i - current_question.updated_at.to_i %>
 //make a voted global
 </script>
 <script>$(OmniPoll.initialize);</script>
