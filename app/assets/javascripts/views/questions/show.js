@@ -10,7 +10,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.answers(), "add", this.addAnswer);
     this.chartView = new OmniPoll.Views.ChartShow({canvasSize: 350});
     this._voted = false
-    if($('.nav').find('#new-question').length < 1){
+    if($('.nav').find('#new-question').length < 1 && window.currentUser !== null){
       $('.nav').prepend('<li>' + JST['questions/link_new']()+'</li>')
     }
     $('body').attr('style', 'background-color: #F3FFE2')
@@ -79,6 +79,12 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
       answer_choice.save({}, {
         success: function(){
           
+          var alertView = new OmniPoll.Views.VoteAlert();
+          show.addSubview(".chart",alertView);
+          $('#submit-vote').remove()
+          // var voteView = show.subviews('#submit-vote');
+          
+          
           answer.answer_choices().add(answer_choice);
           var count = answer.get('answer_choice_count');
           answer.set({answer_choice_count: count + 1});
@@ -115,8 +121,9 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   render: function(){
     var content = this.template({
       question: this.model
-    })
-
+    });
+    
+    
     this.$el.html(content);
     this.attachSubviews();
     

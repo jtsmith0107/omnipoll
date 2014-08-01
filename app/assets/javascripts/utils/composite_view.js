@@ -13,17 +13,6 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   attachSubviews: function () {
-    // I decided I didn't want a function that renders ALL the
-    // subviews together. Instead, I think:
-    //
-    // * The user of CompositeView should explicitly render the
-    //   subview themself when they build the subview object.
-    // * The subview should listenTo relevant events and re-render
-    //   itself.
-    //
-    // All that is necessary is "attaching" the subview `$el`s to the
-    // relevant points in the parent CompositeView.
-
     var view = this;
     _(this.subviews()).each(function (subviews, selector) {
       view.$(selector).empty();
@@ -49,8 +38,7 @@ Backbone.CompositeView = Backbone.View.extend({
     subviews.splice(subviews.indexOf(subview), 1);
   },
 
-  subviews: function (selector) { // Optionally pass a selector and I'll initialize/return an array
-    // of subviews for the sel.
+  subviews: function (selector) {
     this._subviews = this._subviews || {};
     if (!selector) {
       return this._subviews;
