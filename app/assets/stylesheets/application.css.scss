@@ -161,6 +161,7 @@ canvas {
 .btn-default{
   background-color: $orange;
   border-radius: 47px;
+  color: $offwhite;
   &:hover{
     background-color: #D17100;
   };
@@ -223,6 +224,43 @@ Quesiton form formatting
 
 
 */
+
+label#question-label {
+  background-color: teal;
+  height: 28px;
+  font-size: 22px;
+  border-radius: 68px;
+  width: 8%;
+  margin-bottom: 19px;
+}
+
+div.answer-form {
+margin-top: 8px;
+}
+
+span.remove-btn.glyphicon.glyphicon-minus-sign {
+  float: left;
+  margin-top: 17px;
+  margin-bottom: 9px;
+  color: $teal;
+  background-color: $darkblue;
+  &:hover{
+    color: #137E8A;
+  };
+}
+
+span#add-answer {
+  background-color: $darkblue;
+  color: $orange;
+  &:hover{
+    color: #CC6E00;
+  };
+}
+
+div#question-jumbo {
+  background-color: $darkblue;
+}
+
 button.remove-btn.btn.btn-danger.btn-xs.col-sm-1 {
   border-radius: 45px;
   width: 23px;

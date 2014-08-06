@@ -1,0 +1,12 @@
+project problems
+
+1. Solving the main problem of allowing clients get a simultaneous
+update of the current question.
+
+2. A periodic event needed to happen on my server at a set interval so I used a gem that runs scripts on the server at a set interval. The script would switch pull another incomplete question from the database, and emit that to all clients currently on the webpage. The server also keeps track 
+
+2. Keep track of questions that have been completed vs still waiting to be voted on
+
+3. Custom validations to allow users to only vote on a question once, which they had no relation to validate normally. 
+
+4. 

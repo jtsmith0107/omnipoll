@@ -13,6 +13,10 @@ OmniPoll.Views.QuestionNew = Backbone.View.extend({
     'click .remove-btn' : 'removeAnswer'
   },
   
+  className: "jumbotron",
+  
+  id: "question-jumbo",
+  
   addAnswer: function(event){
     event.preventDefault();
     if(this._answerCount < 10){
