@@ -14,6 +14,11 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :answerchoices, through: :answers, source: :answerschoices
   
+  before_destroy :destroy_answers
+  
+  def destory_answers
+    self.answers.each{|d| d.delete}
+  end
   
   def switch_question
     # redirect_to root_url

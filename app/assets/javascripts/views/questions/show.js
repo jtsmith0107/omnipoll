@@ -102,7 +102,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
               // show.addSubview('.answers', answerShow);
             // }   
           });
-          this.chartView.render()
+          show.chartView.render()
         }
       });      
     }

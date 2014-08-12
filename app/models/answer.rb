@@ -17,5 +17,11 @@ class Answer < ActiveRecord::Base
   has_many :answerchoices, 
   class_name: :Answerchoice
   
+  before_destroy :destroy_answerchoices
+  
+  def destroy_answerchoices
+    self.answerschoices.each{|d| d.delete}
+  end
+  
   has_many :users, through: :answerchoices, source: :user
 end

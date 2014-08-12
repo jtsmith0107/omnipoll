@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="question-title" 
     class="col-sm-8" id='question-label'
-    name="question[title]">Poll</label>
+    name="question[title]">New Poll</label>
       <input type="text" class="form-control" id="question-title" 
       name="question[title]" placeholder="Title for Question">
   </div>
@@ -14,17 +14,18 @@
     <div class='answer-form'>  
      <div class="col-sm-7">
       <input type="text" class="form-control" id="answer-1"
-      placeholder="Answer Title" name="answers[title][]">
+      placeholder="Answer Title" name="answers[][title]">
       </div>
+    <span class="remove-btn glyphicon glyphicon-remove-sign"></span>
     </div>
 
-  <span class="remove-btn glyphicon glyphicon glyphicon-minus-sign"></span>
+
     <div class='answer-form'>    
     <div class="col-sm-7">
       <input type="text" class="form-control" id="answer-2"
-      placeholder="Answer Title" name="answers[title][]">
+      placeholder="Answer Title" name="answers[][title]">
     </div>
-        <span class="remove-btn glyphicon glyphicon-minus-sign"></span>
+        <span class="remove-btn glyphicon glyphicon-remove-sign"></span>
     </div>
   </div>
     

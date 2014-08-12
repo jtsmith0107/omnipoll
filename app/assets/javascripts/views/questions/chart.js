@@ -42,8 +42,8 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
       //sort based on size to get color priorities   
      
       this.pieChart = new Chart(canvas).Pie(this._data, {
-        animateRotate: true,
-        animateScale: true,
+        animateRotate: false,
+        animateScale: false,
         segmentShowStroke: true
       }); 
     }

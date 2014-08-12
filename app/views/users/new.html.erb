@@ -1,12 +1,15 @@
-<h1>Sign Up</h1>
 
+<div class='jumbotron question-show'>
+  <div class="question-show-head">
+    <span class="label label-default question-label">Sign Up</span></div>
 <form action="/users" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label>Email<br>
-    <input name="user[email]" type="text"><br>
+  <label ><br>
+        <input class="user-input" name="user[email]" type="text" placeholder='Email'><br>
   </label><br>
-  <label>Password<br>
-    <input name="user[password]" type="password"><br>
+  <label >
+    <input class="user-input" name="user[password]" type="password" placeholder='Password'><br>
   </label><br>
-  <input type="submit" value="Submit" class="btn btn-primary"><br>
+  <input type="submit" value="Submit" class="btn btn-default"><br>
 </form>
+</div>

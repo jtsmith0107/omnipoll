@@ -44,12 +44,12 @@ OmniPoll.Views.QuestionNew = Backbone.View.extend({
   submit: function(event){
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON();
-    var newQuestion = new OmniPoll.Models.Question(params['question']);
+    var newQuestion = new OmniPoll.Models.Question(params);
     // newQuestion.
     newQuestion.save({}, {
       success: function(){
         OmniPoll.Collections.questions.add(newQuestion);
-        Backbone.history.navigate('/', {trigger: true});
+        Backbone.history.navigate('/questions/home', {trigger: true});
       }
     })
   }

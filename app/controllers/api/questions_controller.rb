@@ -1,8 +1,7 @@
 class Api::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
-    
-    @question.answers.new(question_params)
+    @question.answers.new(answer_params)
     if @question.save
       render json: @question
     else
@@ -46,8 +45,7 @@ class Api::QuestionsController < ApplicationController
   def answer_params
     params.permit(:answers => [:title])
            .require(:answers)
-           .values
-           .reject { |data| data.values.all?(&:blank?) }
+           .reject { |data| data == '' }
   end
 
 end

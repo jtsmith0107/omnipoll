@@ -226,19 +226,22 @@ Quesiton form formatting
 */
 
 label#question-label {
-  background-color: teal;
+  background-color: $teal;
+  color: $offwhite;
   height: 28px;
   font-size: 22px;
   border-radius: 68px;
-  width: 8%;
-  margin-bottom: 19px;
+  width: 16%;
+  margin-top: -20px;
+  margin-bottom: 31px;
+  margin-left: 12px;
 }
 
 div.answer-form {
 margin-top: 8px;
 }
 
-span.remove-btn.glyphicon.glyphicon-minus-sign {
+span.remove-btn.glyphicon.glyphicon-remove-sign {
   float: left;
   margin-top: 17px;
   margin-bottom: 9px;
@@ -354,5 +357,12 @@ margin-bottom: -13px;
   text-align:center;
   margin-top: 20%;
 }
+
+// User sign up/ sign in formatting
+input.user-input {
+width: 500px;
+height: 36px;
+}
+
 
 
