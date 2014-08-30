@@ -38,17 +38,23 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   
   selectAnswer: function(event){
 	  if(!this._voted){
-      
+      //if any answers have active class, fade the active, and unfade target
+
+			
       if($(event.currentTarget).hasClass('active') === true){
         $('.list-group-item').removeClass('active');
         $('.list-group-item').css('border' , "");
-		$(".answers li:not('.active')").fadeTo("fast", 1);   
+				$(".answers li:not('.active')").fadeTo("fast", 1);   
       }else{
-		$('.list-group-item').removeClass('active'); 
-		$('.list-group-item').css('border' , "")
-		$(event.currentTarget).toggleClass('active');  
-		$(event.currentTarget).css('border' , "1px solid white")
-		$(".answers li:not('.active')").fadeTo("fast", 0.3);   
+				if($('.active').length !== 0){
+					$('.active').fadeTo('fast', 0.3);
+					$(event.currentTarget).fadeTo('fast', 1.0);
+				}
+				$('.list-group-item').removeClass('active'); 
+				$('.list-group-item').css('border' , "")
+				$(event.currentTarget).toggleClass('active');  
+				$(event.currentTarget).css('border' , "1px solid white")
+				$(".answers li:not('.active')").fadeTo("fast", 0.3);   
       }
 
       this._selected_answer = $(event.currentTarget).attr('data-id');          
@@ -64,10 +70,19 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     newAnswer.save({}, {
       success: function(){
         showView.model.answers().add(newAnswer);
-        // showView.addAnswer(newAnswer);
         $("#answerModal").modal('hide');
       }
     })
+  },
+  
+  redrawChart: function(answer){
+		chartData = {
+			value: parseInt(answer.escape('answer_choice_count')),
+			label: answer.escape('title')
+		};
+		this.chartView.addData(chartData);
+		this.addSubview('.chart', this.chartView);
+
   },
   
   submitVote: function(){
@@ -84,13 +99,10 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
       var show = this;
       
       answer_choice.save({}, {
-        success: function(){
-          
+        success: function(){          
           var alertView = new OmniPoll.Views.VoteAlert();
           show.addSubview(".chart",alertView);
-          $('#submit-vote').remove()
-          // var voteView = show.subviews('#submit-vote');
-          
+          $('#submit-vote').remove();          
           
           answer.answer_choices().add(answer_choice);
           var count = answer.get('answer_choice_count');
@@ -98,28 +110,20 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
           
           _.each(show.subviews('.answers'), function(answerShow){
             var data = answerShow.attributes()['data-id'];
-            // if (data === answer.escape('id')){
               answerShow.render();
-              // show.removeSubview('.answers',answerShow);
-              // show.addSubview('.answers', answerShow);
-            // }   
           });
-		  this.redrawChart(answer);
+					chartData = {
+						value: parseInt(answer.escape('answer_choice_count')),
+						label: answer.escape('title')
+					};
+					show.chartView.updateData(chartData);
           show.chartView.render();
         }
       });      
     }
   },
   
-   redrawChart: function(answer){
-      chartData = {
-        value: parseInt(answer.escape('answer_choice_count')),
-        label: answer.escape('title')
-      };
-	  this.chartView.addData(chartData);
-      this.addSubview('.chart', this.chartView);
-	
-   },
+
   
   addAnswer: function(answer){
     var show = this
@@ -129,7 +133,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
     });
     show.removeSubview('.chart', show.chartView);        
 
-	this.redrawChart(answer);
+	show.redrawChart(answer);
 
     show.addSubview('.answers', answerView);
 
