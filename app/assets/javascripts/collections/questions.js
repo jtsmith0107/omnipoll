@@ -1,5 +1,6 @@
 OmniPoll.Collections.Questions = Backbone.Collection.extend({
   url: '/api/questions',
+  
   model: OmniPoll.Models.Question,
   
   getOrFetch: function(id){

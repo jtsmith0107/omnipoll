@@ -9,8 +9,7 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
   
 
 
-  },
-  
+  },  
 
   addData: function(newData){
       var elNum = this._data.length;      
@@ -42,7 +41,7 @@ OmniPoll.Views.ChartShow = Backbone.CompositeView.extend({
       //sort based on size to get color priorities   
      
       this.pieChart = new Chart(canvas).Pie(this._data, {
-        animateRotate: false,
+        animateRotate: true,
         animateScale: false,
         segmentShowStroke: true
       }); 

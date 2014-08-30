@@ -1,13 +1,10 @@
 OmniPoll.Views.AnswersShow = Backbone.View.extend({
   initialize: function(options){
-    // this.$el = $('.list-group-item');
-   //  this._ensureElement();
-   //  _.bindAll(this, 'render');
-   //  this.render();
    this.model = options.model;
    this.color = options.color
    this.listenTo(this.model.answer_choices(), 'sync add', this.render)
   },
+  
   tagName: 'li',
   
   className: 'list-group-item',
@@ -25,11 +22,6 @@ OmniPoll.Views.AnswersShow = Backbone.View.extend({
     'click' : 'selectAnswer'
   },
   
-  selectAnswer: function(event) {
-
-    // console.log(event.currentTarget);
-  },
-
   render: function(){
     var content = this.template({
       answer: this.model
@@ -41,7 +33,3 @@ OmniPoll.Views.AnswersShow = Backbone.View.extend({
   } 
   
 });
-
-// setup a rake task to change current question id
-// `rails g task omnipoll change_question`
-// rake omnipoll:change_question

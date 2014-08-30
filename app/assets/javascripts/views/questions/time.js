@@ -4,16 +4,25 @@ OmniPoll.Views.TimeView = Backbone.View.extend({
   className: "timer",
   
   render: function(){
-    var switchTime = Math.floor(60- window.questionTimer);
-    if(switchTime < 1){
-      switchTime = 1 * 60
-    }
+	questionTime = window.currentQuestion.updated_at;
+	year = parseInt(questionTime.slice(0, 4));
+	month = parseInt(questionTime.slice(5, 7));
+	day = parseInt(questionTime.slice(8, 10));
+	hour = parseInt(questionTime.slice(11,13));
+	min = parseInt(questionTime.slice(14, 16));
+	sec = parseInt(questionTime.slice(17,19));
+	milli = parseInt(questionTime.slice(20,23));
+	var switchTime = new Date(year, month - 1, day, hour - 7, min, sec, milli);
+    // var switchTime = Math.floor(60- window.questionTimer);
+    // if(switchTime < 1){
+    //   switchTime = 1 * 60
+    // }
     var content = this.template({
       time: switchTime
     });
     
     this.$el.html(content);
-    this.$el.attr('data-timer', switchTime);
+    this.$el.attr('data-timer', 60 -(new Date() - switchTime)/1000);
     
      this.$el.TimeCircles({
        circle_bg_color: "#ACF0F2",

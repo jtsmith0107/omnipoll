@@ -11,16 +11,15 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
         router.questionShow();
       }
     });
-    // this._subviews = {}
-
-
   },
   
   routes: {
       '' : '',
       'questions/home' : 'questionShow',
       'questions/new' : 'questionNew',
-      'questions/history' : 'questionHistory'
+      'questions/history' : 'questionHistory',
+	  'questions/:id' : 'questionsById'
+	  
   },
   
   splash: function(){
@@ -35,6 +34,16 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
       model: question
     });
     this._swapView(showView);
+  },
+  
+  questionsById: function(id){
+	var question = OmniPoll.Collections.questions.getOrFetch(id);
+	
+	var showView = new OmniPoll.Views.QuestionsShow({
+		model: question
+	});
+	
+	this._swapView(showView);
   },
   
   questionNew: function(){
