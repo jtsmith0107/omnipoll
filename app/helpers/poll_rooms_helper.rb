@@ -1,0 +1,2 @@
+module PollRoomsHelper
+end

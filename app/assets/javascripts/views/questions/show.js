@@ -39,7 +39,6 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   selectAnswer: function(event){
 	  if(!this._voted){
       //if any answers have active class, fade the active, and unfade target
-
 			
       if($(event.currentTarget).hasClass('active') === true){
         $('.list-group-item').removeClass('active');

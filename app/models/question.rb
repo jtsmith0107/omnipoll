@@ -2,10 +2,12 @@
 #
 # Table name: questions
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)      not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  title        :string(255)      not null
+#  created_at   :datetime
+#  updated_at   :datetime
+#  completed    :boolean          default(FALSE)
+#  poll_room_id :integer          default(0), not null
 #
 
 class Question < ActiveRecord::Base
@@ -13,6 +15,8 @@ class Question < ActiveRecord::Base
   
   has_many :answers
   has_many :answerchoices, through: :answers, source: :answerschoices
+  belongs_to :poll_room
+  
   
   before_destroy :destroy_answers
   

@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates :email, :session_token, presence: true
   validates :email, uniqueness: true
   
+  has_many :memberships
+  
   attr_reader :password
   after_initialize :ensure_session_token
   

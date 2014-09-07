@@ -18,7 +18,8 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
       'questions/home' : 'questionShow',
       'questions/new' : 'questionNew',
       'questions/history' : 'questionHistory',
-	  'questions/:id' : 'questionsById'
+		  'questions/:id' : 'questionsById',
+			'poll_room/:id' : 'pollRoomShow'
 	  
   },
   
@@ -60,6 +61,15 @@ OmniPoll.Routers.OmniPollRouter = Backbone.Router.extend({
     });
     this._swapView(historyView);
   },
+	
+	pollRoomShow : function(id){
+		var pollRoom = OmniPoll.Collections.pollRooms.getOrFetch(id);
+		
+		var showView = new OmniPoll.Views.PollRoomShow({
+			model: pollRoom
+		});
+		this._swapView(showView);
+	},
   
   _swapView: function(newView){
     if(this.currentView){

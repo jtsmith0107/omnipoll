@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:create, :update, :destroy, :show, :index]
     resources :answers, only: [:create, :update, :destroy]
     resources :answerchoices, only: [:create, :update, :destroy]
+    resources :poll_rooms, only: [:create, :index, :show, :update, :destroy]
   end
 
   root to: 'staticpages#root'

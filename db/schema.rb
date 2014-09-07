@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730185728) do
+ActiveRecord::Schema.define(version: 20140830063443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,13 +59,33 @@ ActiveRecord::Schema.define(version: 20140730185728) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "questions", force: true do |t|
-    t.string   "title",                      null: false
+  create_table "memberships", force: true do |t|
+    t.integer  "poll_room_id", null: false
+    t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "completed",  default: false
   end
 
+  add_index "memberships", ["poll_room_id", "user_id"], name: "index_memberships_on_poll_room_id_and_user_id", unique: true, using: :btree
+
+  create_table "poll_rooms", force: true do |t|
+    t.integer  "question_id", null: false
+    t.string   "title",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "poll_rooms", ["question_id"], name: "index_poll_rooms_on_question_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "title",                        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "completed",    default: false
+    t.integer  "poll_room_id", default: 0,     null: false
+  end
+
+  add_index "questions", ["poll_room_id"], name: "index_questions_on_poll_room_id", using: :btree
   add_index "questions", ["title"], name: "index_questions_on_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
