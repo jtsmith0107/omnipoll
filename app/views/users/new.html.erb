@@ -1,4 +1,3 @@
-
 <div class='jumbotron question-show'>
   <div class="question-show-head">
     <span class="label label-default question-label">Sign Up</span></div>
@@ -10,6 +9,13 @@
   <label >
     <input class="user-input" name="user[password]" type="password" placeholder='Password'><br>
   </label><br>
-  <input type="submit" value="Submit" class="btn btn-default"><br>
+  <input id="create-user" type="submit" value="Submit" class="btn btn-default"><br>
+</form>
+
+<form action='/users/guest' method='post'>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label ><br>
+	<button id='guest-login' class='btn btn-default'>Guest Sign Up</button>
 </form>
 </div>
+

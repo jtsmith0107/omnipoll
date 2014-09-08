@@ -3,7 +3,7 @@ OmniPoll.Views.PollRoomShow = Backbone.View.extend({
   template: JST['poll_rooms/show'],	
 	
 	initialize: function(){
-		this.question = 
+
 	},
 	
 	render: function(){

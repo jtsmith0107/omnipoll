@@ -15,12 +15,11 @@ class Question < ActiveRecord::Base
   
   has_many :answers
   has_many :answerchoices, through: :answers, source: :answerschoices
-  belongs_to :poll_room
-  
+  belongs_to :poll_room  
   
   before_destroy :destroy_answers
   
-  def destory_answers
+  def destroy_answers
     self.answers.each{|d| d.delete}
   end
   

@@ -14,6 +14,20 @@ class UsersController < ApplicationController
     end
   end  
   
+  
+  def guest
+    guest_name = "Guest #{User.last.id + 1}"
+    @guest = User.new({email: guest_name, password: 'guest'})
+    
+    if @guest.save
+      sign_in!(@guest)
+      redirect_to root_url
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
+    end
+  end
+  
   private
   def user_params
     params.require(:user).permit(:email, :password)

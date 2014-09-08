@@ -141,9 +141,7 @@ OmniPoll.Views.QuestionsShow = Backbone.CompositeView.extend({
   render: function(){
     var content = this.template({
       question: this.model
-    });
-    
-    
+    });    
     this.$el.html(content);
     this.attachSubviews();
     

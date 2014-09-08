@@ -17,4 +17,4 @@ OmniPoll.Collections.PollRooms = Backbone.Collection.extend({
   }
 });
 
-OmniPoll.Collections.pollRooms = new OmniPoll.Collections.PollRoom();
+OmniPoll.Collections.pollRooms = new OmniPoll.Collections.PollRooms();

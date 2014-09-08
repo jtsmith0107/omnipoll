@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: 'staticpages#root'
   resources :users
   resource :session
-
+  post '/users/guest', to: 'users#guest'
   get '/helloworld/', to: 'api/questions#helloworld', as: 'helloworld', defaults: {format: :json}
 
 end
