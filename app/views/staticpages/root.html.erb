@@ -6,6 +6,11 @@
   
   
     <a class="poll-button" href='/#/questions/home'><button class='btn btn-default'>Check Out the Current Poll!</button></a>
+    <form action='/users/guest' method='post'>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label ><br>
+    	<button id='splash-login' class='btn btn-default'>Guest Sign Up</button>
+    </form>
     <!-- <a class="poll-button" href='/#/questions/home'><button class='btn btn-default'>Guest Login</button></a> -->
   </div>
   

@@ -1,5 +1,5 @@
 OmniPoll.Views.SplashView = Backbone.View.extend({
-  template: JST['splash'],
+  template: JST['poll_rooms/splash'],
   
   className: "splash",
     

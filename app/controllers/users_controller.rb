@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     
     if @guest.save
       sign_in!(@guest)
-      redirect_to root_url
+      redirect_to "#{root_url}/#/questions/home"
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
